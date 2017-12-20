@@ -5,11 +5,13 @@ import {
   Link, HashRouter}
   from 'react-router-dom';
 import { connect } from 'react-redux';
+import Video from './youtube/video';
 
 const App = () => {
   return (
     <div className="grandparent">
         Hello friend
+        <Video />
     </div>
   );
 };
