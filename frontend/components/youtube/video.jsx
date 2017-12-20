@@ -9,56 +9,51 @@ class Video extends React.Component {
   constructor(props){
     super(props);
     this.videosList = [];
-    this.keepSearching();
-    this.testSearch("hockey");
+    // this.keepSearching();
+    this.state = {
+      videoId:'UxEJ3Xg01jE'
+    };
+    // this.testSearch("sports").bind(this);
   }
 
   testSearch(term) {
-    fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=20&order=viewCount&q=' + term + '&type=video&key=AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8').
-    then((response) => response.json()).
+    let id;
+    let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=20&order=viewCount&q=' + term + '&type=video&key=AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8';
+    // debugger
+    fetch(url).then((response) => response.json()).
     then((findResponse) => {
+      id = findResponse.items[0].id.videoId;
       console.log(findResponse);
+      console.log(id);
+      this.setState({videoId: id});
     });
   }
 
-  // componentDidMount(){
-  //   fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=20&order=viewCount&q=soccer&type=video&key=AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8').
-  //   then((response) => response.json()).
-  //   then((findResponse) => {
-  //     console.log(findResponse);
-  //   });
-  // }
-
-  search(){
-    if (this.videosList.length == 0) {
-      this.keepSearching();
-    }
+  componentDidMount(){
+    debugger
+    this.testSearch("sports");
   }
 
-  keepSearching(){
-    console.log("here");
-    searchYouTube({ key: API_KEY, term: "football", maxResults: 1}, (videos) => {
-      videos.forEach(vid => {
-        this.videosList.push(vid);
-      });
-    });
-    console.log(this.videosList);
-  }
 
   render(){
     const opts = {
      method: 'get',
      height: '390',
      width: '640',
-     host: 'https://www.youtube.com',
+     host: 'http://www.youtube.com',
      playerVars: { // https://developers.google.com/youtube/player_parameters
        autoplay: 1
-    }
-  };
+     }
+    };
+
+    console.log("this.videoID");
+    console.log(this.state.videoId);
+    // let placeholder = 'UxEJ3Xg01jE';
+
 
     return (
       <div>
-        <YouTube videoId="2g811Eo7K8U"
+        <YouTube videoId={this.state.videoId}
           opts={opts}
           onReady={this.onReady}/>
         <button className="start-button"  >
@@ -66,9 +61,9 @@ class Video extends React.Component {
         </button>
       </div>
     );
+
+
   }
-
-
 }
 
 export default Video;
