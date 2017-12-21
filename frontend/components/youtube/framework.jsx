@@ -35,9 +35,14 @@ class Framework extends React.Component {
   render(){
 
     return (
-      <div>
-        <BigVideo videoId={this.state.bigVideoId} />
-        <SmallVideo videoId={this.state.smallVideoId} />
+      <div className="grandparent">
+        <div className="left-pane">
+          <SmallVideo videoId={this.state.smallVideoId} />
+        </div>
+
+        <div className="center-pane">
+          <BigVideo videoId={this.state.bigVideoId} />
+        </div>
 
       </div>
     );

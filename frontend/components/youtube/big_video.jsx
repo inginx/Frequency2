@@ -9,7 +9,7 @@ const API_KEY = 'AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8';
 class BigVideo extends React.Component {
   constructor(props){
     super(props);
-    
+
   }
 
 
@@ -31,7 +31,8 @@ class BigVideo extends React.Component {
       <button>
         <YouTube videoId={this.props.videoId}
           opts={opts}
-          onReady={this.onReady}/>
+          onReady={this.onReady}
+          className="big-video-parent"/>
       </button>
     );
 

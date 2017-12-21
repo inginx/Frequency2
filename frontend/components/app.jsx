@@ -10,7 +10,7 @@ import Framework from './youtube/framework';
 
 const App = () => {
   return (
-    <div className="grandparent">
+    <div>
       Frequency2
         <Framework />
     </div>
