@@ -5,7 +5,6 @@ import {
   Link, HashRouter}
   from 'react-router-dom';
 import { connect } from 'react-redux';
-import BigVideo from './youtube/big_video';
 import Framework from './youtube/framework';
 
 const App = () => {
