@@ -9,12 +9,9 @@ class Framework extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      bigVideoId: 'UxEJ3Xg01jE',
+      bigVideoId: 'WD53AsuSXmQ',
       miniArray: []
-      // queued: false
-      // smallVideoId: 'UxEJ3Xg01jE'
     };
-    this.miniArray = [];
   }
 
   testSearch(term) {
@@ -23,14 +20,7 @@ class Framework extends React.Component {
 
     fetch(url).then((response) => response.json()).
     then((findResponse) => {
-      // console.log(findResponse);
-      // findResponse.items.forEach(r => {
-      //   this.miniArray.push(r);
-      // });
-      // console.log(this.miniArray);
       id = findResponse.items[0].id.videoId;
-      // id2 = findResponse.items[1].id.videoId;
-      // this.setState({smallVideoId: id2});
       this.setState({bigVideoId: id});
 
       this.setState({miniArray: findResponse.items});
@@ -41,13 +31,17 @@ class Framework extends React.Component {
     this.testSearch("warcraft");
   }
 
+  maximizeVideo(id){
+    debugger
+    this.setState({bigVideoId: id});
+  }
+
   render(){
 
     return (
       <div className="grandparent">
-        <div className="left-pane">
-          <MiniGallery videos={this.state.miniArray} />
-        </div>
+        <MiniGallery videos={this.state.miniArray}
+                     maximizeVideo={this.maximizeVideo}/>
 
         <div className="center-pane">
           <BigVideo videoId={this.state.bigVideoId} />

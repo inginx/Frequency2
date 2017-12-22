@@ -5,30 +5,42 @@ import YouTube from 'react-youtube';
 class SmallVideo extends React.Component {
   constructor(props){
     super(props);
-
+    this.maximizeVideo = this.maximizeVideo.bind(this);
   }
 
+  maximizeVideo(){
+    let thisId = this.props.videoId;
+    let id = this.refs.thisId.getDOMNode().value;
+    debugger
+    this.props.maximizeVideo(id);
+  }
 
   render(){
     const opts = {
       method: 'get',
-      height: '100',
-      width: '165',
+      height: '113',
+      width: '189',
       host: 'http://www.youtube.com',
       playerVars: { // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
-        // origin: 'http://www.youtube.com'
+        mute: "1",
+        controls: "0"
       }
     };
 
-    console.log("small vid id");
-    console.log(this.props.videoId);
     return (
-      <button>
+      <div className="small-video-holder">
+
         <YouTube videoId={this.props.videoId}
+          ref={this.props.videoId}
           opts={opts}
-          onReady={this.onReady} />
-      </button>
+          onReady={this.onReady}
+          className="youtube-embed"/>
+
+        <button
+                className="video-button-layer"
+                onClick={this.maximizeVideo}/>
+      </div>
     );
 
 
