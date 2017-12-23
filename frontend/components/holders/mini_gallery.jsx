@@ -6,20 +6,21 @@ class MiniGallery extends React.Component {
     super(props);
   }
 
-  maximizeVideo(){
-    let thisId = this.props.videoId;
-    let id = this.refs.thisId.getDOMNode().value;
-    debugger
+  maximizeVideo(id){
+    // console.log(this.props);
+    // let thisId = this.props.videoId;
+    // let id = this.refs.thisId.getDOMNode().value;
     this.props.maximizeVideo(id);
+    // debugger
   }
 
   render(){
     if(this.props.videos){
-      let minis = this.props.videos.slice(0, 4).map((m) => {
+      let minis = this.props.videos.slice(0, 2).map((m) => {
         return (
           <SmallVideo videoId={m.id.videoId}
                       key={m.id.videoId}
-                      maximizeVideo={this.maximizeVideo}/>
+                      maximizeVideo={(id) => this.maximizeVideo(id)}/>
         );
       });
 

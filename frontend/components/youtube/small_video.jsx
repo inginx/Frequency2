@@ -9,9 +9,7 @@ class SmallVideo extends React.Component {
   }
 
   maximizeVideo(){
-    let thisId = this.props.videoId;
-    let id = this.refs.thisId.getDOMNode().value;
-    debugger
+    let id = Object.keys(this.refs)[0];
     this.props.maximizeVideo(id);
   }
 
@@ -39,7 +37,7 @@ class SmallVideo extends React.Component {
 
         <button
                 className="video-button-layer"
-                onClick={this.maximizeVideo}/>
+                onClick={() => this.maximizeVideo()}/>
       </div>
     );
 

@@ -12,6 +12,7 @@ class Framework extends React.Component {
       bigVideoId: 'WD53AsuSXmQ',
       miniArray: []
     };
+    this.maximizeVideo = this.maximizeVideo.bind(this);
   }
 
   testSearch(term) {
@@ -32,7 +33,7 @@ class Framework extends React.Component {
   }
 
   maximizeVideo(id){
-    debugger
+    // debugger
     this.setState({bigVideoId: id});
   }
 
