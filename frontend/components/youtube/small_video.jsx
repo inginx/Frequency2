@@ -9,8 +9,8 @@ class SmallVideo extends React.Component {
   }
 
   maximizeVideo(){
-    let id = Object.keys(this.refs)[0];
-    this.props.maximizeVideo(id);
+    let video = this.props.video;
+    this.props.maximizeVideo(video);
   }
 
   render(){
@@ -30,7 +30,7 @@ class SmallVideo extends React.Component {
       <div className="small-video-holder">
 
         <YouTube videoId={this.props.video.id.videoId}
-          ref={this.props.video.id.videoId}
+          ref={this.props.video}
           opts={opts}
           onReady={this.onReady}
           className="youtube-embed"/>

@@ -22,10 +22,10 @@ class BigVideo extends React.Component {
        origin: 'http://www.youtube.com'
      }
     };
-
+    console.log(this.props);
     return (
       <button>
-        <YouTube videoId={this.props.videoId}
+        <YouTube videoId={this.props.video.id.videoId}
           opts={opts}
           onReady={this.onReady}
           className="big-video-parent"/>

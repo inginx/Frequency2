@@ -7,8 +7,8 @@ class MiniGallery extends React.Component {
     this.queue = [];
   }
 
-  maximizeVideo(id){
-    this.props.maximizeVideo(id);
+  maximizeVideo(video){
+    this.props.maximizeVideo(video);
   }
 
   render(){
@@ -21,7 +21,7 @@ class MiniGallery extends React.Component {
         return (
           <SmallVideo video={m}
                       key={m.id.videoId}
-                      maximizeVideo={(id) => this.maximizeVideo(id)}/>
+                      maximizeVideo={(m) => this.maximizeVideo(m)}/>
         );
       });
 
