@@ -33,7 +33,6 @@ class Framework extends React.Component {
   }
 
   maximizeVideo(id){
-    // debugger
     this.setState({bigVideoId: id});
   }
 

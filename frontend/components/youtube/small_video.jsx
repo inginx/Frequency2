@@ -29,8 +29,8 @@ class SmallVideo extends React.Component {
     return (
       <div className="small-video-holder">
 
-        <YouTube videoId={this.props.videoId}
-          ref={this.props.videoId}
+        <YouTube videoId={this.props.video.id.videoId}
+          ref={this.props.video.id.videoId}
           opts={opts}
           onReady={this.onReady}
           className="youtube-embed"/>
