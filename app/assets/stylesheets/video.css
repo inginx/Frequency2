@@ -1,5 +1,6 @@
 .all {
   font-family: 'Bungee', cursive;
+  color: blue;
 }
 
 .big-video-parent {
@@ -59,13 +60,40 @@
   opacity: 0;
 }
 
+.video-button-layer:hover {
+  opacity: 1;
+  background-color: black;
+  color: white;
+  font-family: 'Bungee', cursive;
+  font-size: 14px;
+}
+
+.small-title {
+  font-size: 15px;
+  opacity: 1;
+  position: absolute;
+  z-index: 3;
+  /*display: hidden;*/
+}
+
+.small-title:hover {
+  display: block;
+}
+
 .big-video-description {
   width: 830px;
-  height: 150px;
-  border: 1px solid blue;
+  height: 130px;
   font-size: 28px;
   display: flex;
+  flex-direction: column;
+}
+
+.big-video-top {
+  display: flex;
   flex-direction: row;
+  width: 100%;
+  height: 45%;
+  padding-bottom: 10%;
 }
 
 .big-video-title {
@@ -79,4 +107,9 @@
   width: 10%;
   margin-top: 12px;
   color: red;
+}
+
+.big-video-channel {
+  width: 100%;
+  height: 45%;
 }

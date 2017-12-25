@@ -23,22 +23,25 @@ class SmallVideo extends React.Component {
         autoplay: 1,
         mute: "1",
         controls: "0",
-        iv_load_policy:'3' 
+        iv_load_policy:'3'
       }
     };
+
+    let title = this.props.video.snippet.title;
 
     return (
       <div className="small-video-holder">
 
         <YouTube videoId={this.props.video.id.videoId}
-          ref={this.props.video}
-          opts={opts}
-          onReady={this.onReady}
-          className="youtube-embed"/>
+                 ref={this.props.video}
+                 opts={opts}
+                 onReady={this.onReady}
+                 className="youtube-embed"/>
 
-        <button
-                className="video-button-layer"
-                onClick={() => this.maximizeVideo()}/>
+        <button className="video-button-layer"
+                onClick={() => this.maximizeVideo()}>
+                {title}
+        </button>
       </div>
     );
 
