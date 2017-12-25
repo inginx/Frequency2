@@ -4,24 +4,28 @@ import SmallVideo from '../youtube/small_video';
 class MiniGallery extends React.Component {
   constructor(props){
     super(props);
-    this.queue = [];
+    console.log(this.props.videos);
   }
 
   maximizeVideo(video){
     this.props.maximizeVideo(video);
   }
 
+  replaceVideo(i){
+    this.props.replaceVideo(i);
+  }
+
   render(){
     if(this.props.videos){
-      let target = this.props.videos;
-      let enqueues = target.slice(4, target.length);
-      this.queue.push(...enqueues);
 
-      let minis = target.slice(0, 4).map((m) => {
+      let target = this.props.videos;
+      let minis = target.map((m, i) => {
         return (
           <SmallVideo video={m}
                       key={m.id.videoId}
-                      maximizeVideo={(m) => this.maximizeVideo(m)}/>
+                      index={i}
+                      maximizeVideo={(m) => this.maximizeVideo(m)}
+                      replaceVideo={(i) => this.replaceVideo(i)}/>
         );
       });
 

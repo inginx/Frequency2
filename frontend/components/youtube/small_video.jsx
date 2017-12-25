@@ -6,11 +6,18 @@ class SmallVideo extends React.Component {
   constructor(props){
     super(props);
     this.maximizeVideo = this.maximizeVideo.bind(this);
+    this.replaceVideo = this.replaceVideo.bind(this);
+    // console.log(this.props.key);
   }
 
   maximizeVideo(){
     let video = this.props.video;
     this.props.maximizeVideo(video);
+  }
+
+  replaceVideo(){
+    let index = this.props.index;
+    this.props.replaceVideo(index);
   }
 
   render(){
@@ -41,6 +48,10 @@ class SmallVideo extends React.Component {
         <button className="video-button-layer"
                 onClick={() => this.maximizeVideo()}>
                 {title}
+        </button>
+        <button className="video-x"
+                onClick={() => this.replaceVideo()}>
+          X
         </button>
       </div>
     );

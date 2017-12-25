@@ -10,9 +10,11 @@ class Framework extends React.Component {
     super(props);
     this.state = {
       bigVideo: {},
+      miniQueue: [],
       miniArray: []
     };
     this.maximizeVideo = this.maximizeVideo.bind(this);
+    this.replaceVideo = this.replaceVideo.bind(this);
   }
 
   testSearch(term) {
@@ -23,7 +25,8 @@ class Framework extends React.Component {
       let bigVideo = findResponse.items[0];
       this.setState({bigVideo: bigVideo});
 
-      this.setState({miniArray: findResponse.items});
+      this.setState({miniQueue: findResponse.items});
+      this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
     });
   }
 
@@ -35,12 +38,23 @@ class Framework extends React.Component {
     this.setState({bigVideo: video});
   }
 
+  replaceVideo(i){
+    let newState = this.state.miniQueue;
+    console.log(newState[i]);
+    newState.splice(i, 1);
+    // debugger
+    this.setState({miniQueue: newState });
+    this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
+    // debugger
+  }
+
   render(){
     if(this.state.bigVideo.id){
       return (
         <div className="grandparent">
           <MiniGallery videos={this.state.miniArray}
-            maximizeVideo={this.maximizeVideo}/>
+            maximizeVideo={this.maximizeVideo}
+            replaceVideo={this.replaceVideo}/>
 
           <div className="center-pane">
             <BigVideo video={this.state.bigVideo} />
