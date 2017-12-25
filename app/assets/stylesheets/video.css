@@ -1,5 +1,16 @@
+.all {
+  font-family: 'Bungee', cursive;
+}
+
 .big-video-parent {
 
+}
+
+.nav-bar {
+  width: 100%;
+  padding-left: 3.5%;
+  padding-right: 3.5%;
+  font-size: 28px;
 }
 
 .left-pane {
@@ -46,4 +57,26 @@
   position: absolute;
   z-index: 2;
   opacity: 0;
+}
+
+.big-video-description {
+  width: 830px;
+  height: 150px;
+  border: 1px solid blue;
+  font-size: 28px;
+  display: flex;
+  flex-direction: row;
+}
+
+.big-video-title {
+  margin-top: 12px;
+  width: 80%;
+  height: 75px;
+}
+
+.big-video-live {
+  padding-left: 10%;
+  width: 10%;
+  margin-top: 12px;
+  color: red;
 }

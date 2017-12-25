@@ -9,8 +9,12 @@ import Framework from './youtube/framework';
 
 const App = () => {
   return (
-    <div>
-      Frequency2
+    <div className="all">
+      
+        <div className="nav-bar">
+          Frequency2
+        </div>
+
         <Framework />
     </div>
   );

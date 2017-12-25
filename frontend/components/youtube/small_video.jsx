@@ -22,7 +22,8 @@ class SmallVideo extends React.Component {
       playerVars: { // https://developers.google.com/youtube/player_parameters
         autoplay: 1,
         mute: "1",
-        controls: "0"
+        controls: "0",
+        iv_load_policy:'3' 
       }
     };
 
