@@ -26,8 +26,8 @@ class BigVideo extends React.Component {
     }
 
     let title = this.props.video.snippet.title;
-    if(title.length > 55){
-      title = title.slice(0, 52) + "...";
+    if(title.length > 64){
+      title = title.slice(0, 61) + "...";
     }
 
     return (
