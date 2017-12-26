@@ -5,17 +5,17 @@ import {
   Link, HashRouter}
   from 'react-router-dom';
 import { connect } from 'react-redux';
-import Framework from './youtube/framework';
+import Foundation from './holders/foundation';
 
 const App = () => {
   return (
     <div className="all">
-      
+
         <div className="nav-bar">
           Frequency2
         </div>
 
-        <Framework />
+        <Foundation />
     </div>
   );
 };

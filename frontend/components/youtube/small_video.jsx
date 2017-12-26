@@ -1,13 +1,13 @@
 import React from 'react';
 import YouTube from 'react-youtube';
-
+import $ from 'jquery';
 
 class SmallVideo extends React.Component {
   constructor(props){
     super(props);
     this.maximizeVideo = this.maximizeVideo.bind(this);
     this.replaceVideo = this.replaceVideo.bind(this);
-    // console.log(this.props.key);
+    //circle back to .title-layer problem
   }
 
   maximizeVideo(){
@@ -36,25 +36,34 @@ class SmallVideo extends React.Component {
 
     let title = this.props.video.snippet.title;
 
-    return (
-      <div className="small-video-holder">
+    if(this.props.video){
+      return (
+        <div className="small-video-holder">
 
-        <YouTube videoId={this.props.video.id.videoId}
-                 ref={this.props.video}
-                 opts={opts}
-                 onReady={this.onReady}
-                 className="youtube-embed"/>
+          <YouTube videoId={this.props.video.id.videoId}
+            ref={this.props.video}
+            opts={opts}
+            onReady={this.onReady}
+            className="youtube-embed"/>
 
-        <button className="video-button-layer"
-                onClick={() => this.maximizeVideo()}>
-                {title}
-        </button>
-        <button className="video-x"
-                onClick={() => this.replaceVideo()}>
-          X
-        </button>
-      </div>
-    );
+          <button className="video-button-layer"
+            id={`title-activate${this.props.video.id.videoId}`}
+            onClick={() => this.maximizeVideo()}>
+            {title}
+          </button>
+          <button className="video-x"
+            onClick={() => this.replaceVideo()}>
+            X
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="placeholder">
+          placeholder
+        </div>
+      );
+    }
 
 
   }

@@ -17,7 +17,7 @@ class Framework extends React.Component {
     this.replaceVideo = this.replaceVideo.bind(this);
   }
 
-  testSearch(term) {
+  search(term) {
     let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=30&order=viewCount&q=' + term + '&relevanceLanguage=en&type=video&videoEmbeddable=true&key=AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8';
 
     fetch(url).then((response) => response.json()).
@@ -31,7 +31,7 @@ class Framework extends React.Component {
   }
 
   componentDidMount(){
-    this.testSearch("warcraft");
+    this.search("sports");
   }
 
   maximizeVideo(video){
@@ -40,18 +40,16 @@ class Framework extends React.Component {
 
   replaceVideo(i){
     let newState = this.state.miniQueue;
-    console.log(newState[i]);
     newState.splice(i, 1);
-    // debugger
     this.setState({miniQueue: newState });
     this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
-    // debugger
   }
 
   render(){
     if(this.state.bigVideo.id){
       return (
         <div className="grandparent">
+
           <MiniGallery videos={this.state.miniArray}
             maximizeVideo={this.maximizeVideo}
             replaceVideo={this.replaceVideo}/>
