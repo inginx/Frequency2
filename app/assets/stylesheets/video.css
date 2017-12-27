@@ -146,8 +146,11 @@ body {
 
 .tab-label span {
   position: absolute;
-  right: 115px;
   bottom: 10px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: auto;
   cursor: pointer;
 }
 
