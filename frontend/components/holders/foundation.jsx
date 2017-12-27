@@ -12,7 +12,7 @@ class Foundation extends React.Component {
     };
 
     this.initiate();
-    
+
     this._renderTitles = this._renderTitles.bind(this);
     this._renderChannels = this._renderChannels.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -27,6 +27,7 @@ class Foundation extends React.Component {
       );
     });
     this.frameworks = frameworks;
+    console.log(this.frameworks);
   }
 
   componentDidMount(){
@@ -44,21 +45,58 @@ class Foundation extends React.Component {
   }
 
   handleClick(i, e){
+    debugger
     e.preventDefault();
     this.helper(i);
+  }
+
+  handleX(i, e){
+    debugger
+    e.preventDefault();
+    let frameworks = this.frameworks;
+    let channels = this.state.channels;
+
+    frameworks.splice(i, 1);
+    this.frameworks = frameworks;
+
+    channels.splice(i, 1);
+
+    if(i === this.state.selected){
+      console.log(this.state);
+
+      this.setState({channels: channels}, function(){
+        this.setState({channel: this.state.channels[this.state.selected]}, function(){
+          this.setState({selected: i + 1}, function(){
+            this.setState({selected: i});
+          });
+        });
+      });
+    } else if (i > this.state.selected){
+      this.setState({channels: channels});
+    } else {
+      this.setState({selected: i}, function(){
+        // debugger
+        this.setState({channels: channels});
+      });
+    }
   }
 
   _renderTitles(){
    let channels = this.state.channels.slice(0, 4);
 
    let titles = channels.map((c, i) => {
+     debugger
      let active = (this.state.selected === i ? 'active' : '');
      return (
          <li className={`tab-label ${active}`}
-             key={i}
-             onClick={this.handleClick.bind(this, i)}>
-           <span>{c}</span>
-           <button className="channel-x">
+             key={i}>
+
+           <span onClick={this.handleClick.bind(this, i)}>
+             {c}
+           </span>
+
+           <button className="channel-x"
+                   onClick={this.handleX.bind(this, i)}>
              X
            </button>
          </li>
@@ -73,7 +111,6 @@ class Foundation extends React.Component {
   }
 
   _renderChannels(){
-    console.log(this.state.channels);
     this.frameworks = this.state.channels.map((c, i) => {
       return (
         <Framework channel={c}
@@ -87,6 +124,7 @@ class Foundation extends React.Component {
   }
 
   render(){
+    debugger
     if(this.state.channels.length > 0){
       return (
         <div className="foundation">
@@ -99,7 +137,6 @@ class Foundation extends React.Component {
         <div></div>
       );
     }
-
   }
 }
 

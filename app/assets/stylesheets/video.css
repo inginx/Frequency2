@@ -144,13 +144,13 @@ body {
   text-align: center;
   position: relative;
   border-radius: 2%;
-  cursor: pointer;
 }
 
 .tab-label span {
   position: absolute;
   right: 115px;
   bottom: 10px;
+  cursor: pointer;
 }
 
 .channel-x {
@@ -160,6 +160,10 @@ body {
   background-color: black;
   color: white;
   border: none;
+}
+
+.channel-x:hover {
+  cursor: pointer;
 }
 
 .active {
