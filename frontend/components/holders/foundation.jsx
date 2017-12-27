@@ -5,9 +5,9 @@ class Foundation extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: ["space",  "news", "new york", "bitcoin", "shopping", "basketball", "cartoons",
-                "funny", "aliens","business", "soccer", "technology", "france", "fashion", "poker",
-                "warcraft", "golf", "stories", "weather", "painting", "fishing",  ],
+      channels: ["space",  "news", "new york", "bitcoin", "fashion", "poker", "shopping",
+                "basketball", "cartoons", "funny", "aliens","business", "soccer", "technology",
+                "france", "warcraft", "golf", "stories", "weather", "painting", "fishing" ],
       selected: 0,
       channel: "",
       frameworks: [],
@@ -17,7 +17,6 @@ class Foundation extends React.Component {
 
     this._renderTitles = this._renderTitles.bind(this);
     this._renderChannels = this._renderChannels.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.initiate = this.initiate.bind(this);
     this.helper = this.helper.bind(this);
   }
@@ -71,6 +70,8 @@ class Foundation extends React.Component {
     } else if (i > this.state.selected){
       this.setState({channels: channels});
     } else {
+      //figure out how to not rerender content here
+      //fix when selected - i = 2 || 3
       this.setState({selected: i}, function(){
         this.setState({channels: channels});
       });
@@ -99,9 +100,12 @@ class Foundation extends React.Component {
    });
 
    return (
-     <ul className="tab-labels">
-       {titles}
-     </ul>
+     <div className="title-header">
+       <ul className="tab-labels">
+         {titles}
+       </ul>
+
+     </div>
    );
   }
 

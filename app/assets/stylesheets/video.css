@@ -154,6 +154,11 @@ body {
   cursor: pointer;
 }
 
+.title-header {
+  display: flex;
+  flex-direction: row;
+}
+
 .channel-x {
   position: absolute;
   bottom: 12px;
