@@ -4,7 +4,6 @@ import SmallVideo from '../youtube/small_video';
 class MiniGallery extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props.videos);
   }
 
   maximizeVideo(video){

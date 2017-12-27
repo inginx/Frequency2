@@ -11,7 +11,8 @@ class Framework extends React.Component {
     this.state = {
       bigVideo: {},
       miniQueue: [],
-      miniArray: []
+      miniArray: [],
+      title: this.props.channel
     };
     this.maximizeVideo = this.maximizeVideo.bind(this);
     this.replaceVideo = this.replaceVideo.bind(this);
@@ -19,19 +20,26 @@ class Framework extends React.Component {
 
   search(term) {
     let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=30&order=viewCount&q=' + term + '&relevanceLanguage=en&type=video&videoEmbeddable=true&key=AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8';
-
+    debugger
     fetch(url).then((response) => response.json()).
     then((findResponse) => {
       let bigVideo = findResponse.items[0];
       this.setState({bigVideo: bigVideo});
-
+      console.log("this.props.channel");
+      console.log(this.props.channel);
       this.setState({miniQueue: findResponse.items});
       this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
     });
   }
 
   componentDidMount(){
-    this.search("sports");
+    debugger
+    this.search(this.props.channel);
+  }
+
+  componentDidUpdate(){
+    debugger
+    this.search(this.props.channel);
   }
 
   maximizeVideo(video){
