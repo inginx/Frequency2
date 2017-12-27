@@ -25,7 +25,6 @@ class Framework extends React.Component {
     then((findResponse) => {
       let bigVideo = findResponse.items[0];
       this.setState({bigVideo: bigVideo});
-      console.log(findResponse);
       this.setState({miniQueue: findResponse.items});
       this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
     });
