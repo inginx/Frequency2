@@ -5,8 +5,9 @@ class Foundation extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: ["news", "poker", "warcraft", "golf", "finance", "soccer"],
-      selected: 1,
+      channels: ["cartoons", "funny", "bitcoin", "news",  "fashion", "space",  "poker",
+                "warcraft", "golf", "finance", "technology", "soccer"],
+      selected: 0,
       channel: "",
       frameworks: [],
     };
@@ -27,7 +28,6 @@ class Foundation extends React.Component {
       );
     });
     this.frameworks = frameworks;
-    console.log(this.frameworks);
   }
 
   componentDidMount(){
@@ -45,13 +45,11 @@ class Foundation extends React.Component {
   }
 
   handleClick(i, e){
-    debugger
     e.preventDefault();
     this.helper(i);
   }
 
   handleX(i, e){
-    debugger
     e.preventDefault();
     let frameworks = this.frameworks;
     let channels = this.state.channels;
@@ -62,8 +60,6 @@ class Foundation extends React.Component {
     channels.splice(i, 1);
 
     if(i === this.state.selected){
-      console.log(this.state);
-
       this.setState({channels: channels}, function(){
         this.setState({channel: this.state.channels[this.state.selected]}, function(){
           this.setState({selected: i + 1}, function(){
@@ -75,7 +71,6 @@ class Foundation extends React.Component {
       this.setState({channels: channels});
     } else {
       this.setState({selected: i}, function(){
-        // debugger
         this.setState({channels: channels});
       });
     }
@@ -85,7 +80,6 @@ class Foundation extends React.Component {
    let channels = this.state.channels.slice(0, 4);
 
    let titles = channels.map((c, i) => {
-     debugger
      let active = (this.state.selected === i ? 'active' : '');
      return (
          <li className={`tab-label ${active}`}
@@ -124,7 +118,6 @@ class Foundation extends React.Component {
   }
 
   render(){
-    debugger
     if(this.state.channels.length > 0){
       return (
         <div className="foundation">
