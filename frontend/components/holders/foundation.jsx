@@ -5,24 +5,44 @@ class Foundation extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: [],
+      channels: ["news", "poker", "warcraft", "golf", "finance", "soccer"],
       selected: 0,
+      channel: ""
     };
     this._renderTitles = this._renderTitles.bind(this);
-    this.channels = ["news", "poker", "warcraft", "golf", "finance", "soccer"];
+    // this.channels = ["news", "poker", "warcraft", "golf", "finance", "soccer"];
+    this.handleClick = this.handleClick.bind(this);
+    this.clickUpdate = this.clickUpdate.bind(this);
   }
 
   handleX(e, i){
     e.preventDefault();
-
   }
 
-  handleClick(i, e){
+  componentDidMount(){
+    this.setState({channel: this.state.channels[this.state.selected] });
+  }
+
+  clickUpdate(i){
+    // debugger
+    // console.log(this.state);
+    // console.log(this.channels);
     this.setState({selected: i});
+    console.log(this.state.channels[i]);
+    this.setState({channel: this.state.channels[i]});
+    // debugger
+  }
+
+  handleClick(i){
+    // debugger
+    this.clickUpdate(i);
+    console.log("this.state.channel");
+    console.log(this.state.channel);
+    // debugger
   }
 
   _renderTitles(){
-   let channels = this.channels.slice(0, 4);
+   let channels = this.state.channels.slice(0, 4);
 
    let titles = channels.map((c, i) => {
      let active = (this.state.selected === i ? 'active' : '');
@@ -46,34 +66,28 @@ class Foundation extends React.Component {
    );
   }
 
-  _renderChannels(){
-    let channel = this.channels[this.state.selected];
-    console.log("renderchannels");
-    console.log(channel);
+  _renderChannel(){
     return (
-      <Framework channel={channel} />
+      <Framework channel={this.state.channel} />
     );
   }
 
   render(){
+    // channel = this.channels[this.state.selected];
+
+    console.log("foundationrender");
+    console.log(this.state.channel);
     return (
       <div className="foundation">
         {this._renderTitles()}
-        {this._renderChannels()}
+        {this._renderChannel()}
       </div>
     );
+
   }
 }
 
 export default Foundation;
-
-// <Framework channel={channel} />
-// <ul className="tab-labels">
-//   <li className="tab-label"><span>Channel 1</span></li>
-//   <li className="tab-label"><span>Channel 2</span></li>
-//   <li className="tab-label"><span>Channel 3</span></li>
-//   <li className="tab-label"><span>Channel 4</span></li>
-// </ul>
 
 // debugger
 // let channel = this.channels[this.state.selected];

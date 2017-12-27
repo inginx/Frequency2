@@ -16,31 +16,22 @@ class Framework extends React.Component {
     };
     this.maximizeVideo = this.maximizeVideo.bind(this);
     this.replaceVideo = this.replaceVideo.bind(this);
+    this.search(this.props.channel);
   }
 
   search(term) {
     let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=30&order=viewCount&q=' + term + '&relevanceLanguage=en&type=video&videoEmbeddable=true&key=AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8';
-    debugger
     fetch(url).then((response) => response.json()).
     then((findResponse) => {
       let bigVideo = findResponse.items[0];
       this.setState({bigVideo: bigVideo});
-      console.log("this.props.channel");
-      console.log(this.props.channel);
+      console.log("findResponse");
+      console.log(findResponse);
       this.setState({miniQueue: findResponse.items});
       this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
     });
   }
 
-  componentDidMount(){
-    debugger
-    this.search(this.props.channel);
-  }
-
-  componentDidUpdate(){
-    debugger
-    this.search(this.props.channel);
-  }
 
   maximizeVideo(video){
     this.setState({bigVideo: video});
@@ -60,7 +51,8 @@ class Framework extends React.Component {
 
           <MiniGallery videos={this.state.miniArray}
             maximizeVideo={this.maximizeVideo}
-            replaceVideo={this.replaceVideo}/>
+            replaceVideo={this.replaceVideo}
+            />
 
           <div className="center-pane">
             <BigVideo video={this.state.bigVideo} />

@@ -6,6 +6,9 @@ const API_KEY = 'AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8';
 class BigVideo extends React.Component {
   constructor(props){
     super(props);
+    console.log("bigvideo.this.props");
+    console.log(this.props.video);
+
   }
 
   render(){
@@ -53,10 +56,6 @@ class BigVideo extends React.Component {
         </section>
       </div>
     );
-
-
-
-
   }
 }
 

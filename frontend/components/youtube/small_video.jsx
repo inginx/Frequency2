@@ -7,7 +7,6 @@ class SmallVideo extends React.Component {
     super(props);
     this.maximizeVideo = this.maximizeVideo.bind(this);
     this.replaceVideo = this.replaceVideo.bind(this);
-    //circle back to .title-layer problem
   }
 
   maximizeVideo(){
