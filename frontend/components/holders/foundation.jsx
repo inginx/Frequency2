@@ -6,38 +6,32 @@ class Foundation extends React.Component {
     super(props);
     this.state = {
       channels: ["news", "poker", "warcraft", "golf", "finance", "soccer"],
-      selected: 0,
-      channel: ""
+      selected: 1,
+      channel: "",
+      frameworks: [],
     };
     this._renderTitles = this._renderTitles.bind(this);
+    this._renderChannels = this._renderChannels.bind(this);
     // this.channels = ["news", "poker", "warcraft", "golf", "finance", "soccer"];
     this.handleClick = this.handleClick.bind(this);
-    this.clickUpdate = this.clickUpdate.bind(this);
   }
 
-  handleX(e, i){
-    e.preventDefault();
-  }
+  // handleX(e, i){
+  //   e.preventDefault();
+  // }
 
   componentDidMount(){
     this.setState({channel: this.state.channels[this.state.selected] });
+
+    // this.search(this.state.channels[this.state.selected]);
   }
 
-  clickUpdate(i){
-    // debugger
-    // console.log(this.state);
-    // console.log(this.channels);
-    this.setState({selected: i});
-    console.log(this.state.channels[i]);
-    this.setState({channel: this.state.channels[i]});
-    // debugger
-  }
 
   handleClick(i){
     // debugger
-    this.clickUpdate(i);
-    console.log("this.state.channel");
-    console.log(this.state.channel);
+    this.setState({selected: i});
+    console.log("this.state");
+    console.log(this.state);
     // debugger
   }
 
@@ -51,8 +45,7 @@ class Foundation extends React.Component {
              onClick={this.handleClick.bind(this, i)}
              key={i}>
            <span>{c}</span>
-           <button className="channel-x"
-                   onClick={this.handleX.bind(this)}>
+           <button className="channel-x">
              X
            </button>
          </li>
@@ -66,23 +59,35 @@ class Foundation extends React.Component {
    );
   }
 
-  _renderChannel(){
+  _renderChannels(){
+    let frameworks = this.state.frameworks;
+
+    this.frameworks = this.state.channels.map(c => {
+      return (
+        <Framework channel={c} />
+      );
+    });
     return (
-      <Framework channel={this.state.channel} />
+      this.frameworks[this.state.selected]
     );
   }
 
   render(){
-    // channel = this.channels[this.state.selected];
 
     console.log("foundationrender");
     console.log(this.state.channel);
-    return (
-      <div className="foundation">
-        {this._renderTitles()}
-        {this._renderChannel()}
-      </div>
-    );
+    if(this.state.channels.length > 0){
+      return (
+        <div className="foundation">
+          {this._renderTitles()}
+          {this._renderChannels()}
+        </div>
+      );
+    } else {
+      return (
+        <div></div>
+      );
+    }
 
   }
 }
