@@ -5,9 +5,10 @@ class Foundation extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: ["space",  "news", "new york", "bitcoin", "fashion", "poker", "shopping",
-                "basketball", "cartoons", "funny", "aliens","business", "soccer", "technology",
-                "france", "warcraft", "golf", "stories", "weather", "painting", "fishing" ],
+      channels: ["space",  "news", "new york", "bitcoin", "fashion", "poker","lions",
+      "shopping", "basketball", "dogs", "cartoons", "funny", "aliens","business",
+      "technology", "france", "warcraft", "golf", "soccer", "stories", "weather",
+      "painting", "fishing" ],
       selected: 0,
       channel: "",
       frameworks: [],
@@ -17,8 +18,10 @@ class Foundation extends React.Component {
 
     this._renderTitles = this._renderTitles.bind(this);
     this._renderChannels = this._renderChannels.bind(this);
+    this.handleX = this.handleX.bind(this);
     this.initiate = this.initiate.bind(this);
     this.helper = this.helper.bind(this);
+    this.shuffle = this.shuffle.bind(this);
   }
 
   initiate(){
@@ -49,6 +52,35 @@ class Foundation extends React.Component {
     this.helper(i);
   }
 
+  shuffle(){
+    let channels = this.state.channels;
+    let shuffledChannels = [];
+    let prevSelected = this.state.selected;
+
+    while(channels.length > 0){
+      // debugger
+      let rand = Math.floor(Math.random() * channels.length);
+      shuffledChannels.push(channels[rand]);
+      channels = (channels.slice(0, rand)).concat(channels.slice(rand + 1, channels.length));
+    }
+
+    let frameworks = shuffledChannels.map(c => {
+      return (
+        <Framework channel={c} />
+      );
+    });
+
+    this.setState({channels: shuffledChannels}, () => {
+      // debugger
+      this.setState({frameworks: frameworks}, () => {
+        this.setState({selected: prevSelected + 1}, () => {
+          this.setState({selected: prevSelected});
+        });
+      });
+    });
+    // debugger
+  }
+
   handleX(i, e){
     e.preventDefault();
     let frameworks = this.frameworks;
@@ -67,13 +99,26 @@ class Foundation extends React.Component {
           });
         });
       });
+
     } else if (i > this.state.selected){
       this.setState({channels: channels});
-    } else {
-      //figure out how to not rerender content here
-      //fix when selected - i = 2 || 3
-      this.setState({selected: i}, function(){
-        this.setState({channels: channels});
+
+    } else if(i === this.state.selected - 1) {
+      this.setState({channels: channels}, function(){
+        this.setState({selected: i});
+      });
+
+    } else if (i === this.state.selected - 2){
+      this.setState({channels: channels}, function(){
+        this.setState({selected: i + 1});
+
+      });
+      //
+      // this shouldn't force rerender when channel doesn't change
+      //
+    } else if (i === this.state.selected - 3){
+      this.setState({channels: channels}, function(){
+        this.setState({selected: i + 2});
       });
     }
   }
@@ -103,6 +148,9 @@ class Foundation extends React.Component {
      <div className="title-header">
        <ul className="tab-labels">
          {titles}
+         <section className="fa fa-random shuffle"
+                  onClick={() => this.shuffle()}>
+         </section>
        </ul>
 
      </div>

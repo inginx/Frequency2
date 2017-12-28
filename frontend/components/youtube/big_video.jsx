@@ -11,7 +11,7 @@ class BigVideo extends React.Component {
   render(){
     const opts = {
      method: 'get',
-     height: '505',
+     height: '515',
      width: '830',
      host: 'http://www.youtube.com',
      playerVars: { // https://developers.google.com/youtube/player_parameters

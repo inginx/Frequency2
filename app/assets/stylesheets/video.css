@@ -137,11 +137,11 @@ body {
 
 .tab-label {
   height: 100%;
-  width: 20%;
+  width: 20.65%;
   border: 1px solid white;
   text-align: center;
   position: relative;
-  border-radius: 2%;
+  border-radius: 10%;
 }
 
 .tab-label span {
@@ -161,11 +161,12 @@ body {
 
 .channel-x {
   position: absolute;
-  bottom: 12px;
+  bottom: 7px;
   right: 10px;
   background-color: black;
   color: white;
   border: none;
+  font-size: 18px;
 }
 
 .channel-x:hover {
@@ -173,5 +174,17 @@ body {
 }
 
 .active {
-  color: yellow;
+  background-color: white;
+  color: black;
+}
+
+.tab-labels section {
+  font-size: 32px;
+}
+
+.shuffle {
+  font-size: 36px;
+  margin-left: 10px;
+  margin-top: 6px;
+  cursor: pointer;
 }
