@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import Foundation from './holders/foundation';
 
 const App = () => {
+  console.log("in app");
   return (
     <div className="all">
 

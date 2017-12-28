@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom';
 import App from './app';
 
 const Root = ({ store }) => (
+  console.log("in root");
   <Provider store={ store }>
     <HashRouter>
       <App/>
