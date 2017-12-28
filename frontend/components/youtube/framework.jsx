@@ -14,6 +14,7 @@ class Framework extends React.Component {
       miniArray: [],
       title: this.props.channel
     };
+    console.log("here constructor");
     this.maximizeVideo = this.maximizeVideo.bind(this);
     this.replaceVideo = this.replaceVideo.bind(this);
     this.search(this.props.channel);
@@ -33,7 +34,6 @@ class Framework extends React.Component {
       console.log("here");
     });
   }
-
 
   maximizeVideo(video){
     this.setState({bigVideo: video});
