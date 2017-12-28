@@ -23,10 +23,14 @@ class Framework extends React.Component {
     let url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&eventType=live&maxResults=30&order=viewCount&q=' + term + '&relevanceLanguage=en&type=video&videoEmbeddable=true&key=AIzaSyBpulm8TtbJfyVQqUlpu4wAtrswEek2gB8';
     fetch(url).then((response) => response.json()).
     then((findResponse) => {
+      console.log(findResponse);
       let bigVideo = findResponse.items[0];
       this.setState({bigVideo: bigVideo});
       this.setState({miniQueue: findResponse.items});
       this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
+    }).catch((error) => {
+      console.error(error);
+      console.log("here");
     });
   }
 

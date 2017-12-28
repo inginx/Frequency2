@@ -5,10 +5,11 @@ class Foundation extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: ["space",  "news", "new york", "bitcoin", "fashion", "poker","lions",
-      "shopping", "basketball", "dogs", "cartoons", "funny", "aliens","business",
-      "technology", "france", "warcraft", "golf", "soccer", "stories", "weather",
-      "painting", "fishing" ],
+      channels: ["news", "new york", "bitcoin", "fashion", "poker", "lions",
+      "VR", "ski", "hockey", "kung fu", "basketball", "dogs", "cartoons",
+      "funny", "aliens","business", "technology", "shopping", "france",
+      "warcraft", "golf", "soccer", "stories", "weather", "painting",
+      "fishing" ],
       selected: 0,
       channel: "",
       frameworks: [],
@@ -58,7 +59,6 @@ class Foundation extends React.Component {
     let prevSelected = this.state.selected;
 
     while(channels.length > 0){
-      // debugger
       let rand = Math.floor(Math.random() * channels.length);
       shuffledChannels.push(channels[rand]);
       channels = (channels.slice(0, rand)).concat(channels.slice(rand + 1, channels.length));
@@ -71,14 +71,12 @@ class Foundation extends React.Component {
     });
 
     this.setState({channels: shuffledChannels}, () => {
-      // debugger
       this.setState({frameworks: frameworks}, () => {
         this.setState({selected: prevSelected + 1}, () => {
           this.setState({selected: prevSelected});
         });
       });
     });
-    // debugger
   }
 
   handleX(i, e){
