@@ -6,11 +6,11 @@ class Foundation extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: ["space", "news", "new york", "bitcoin", "fashion", "poker", "lions",
-      "VR", "ski", "hockey", "kung fu", "basketball", "dogs", "cartoons",
-      "funny", "aliens","business", "shopping", "france",
-      "warcraft", "golf", "soccer", "stories", "weather", "painting",
-      "fishing" ],
+      channels: ["space", "news", "new york", "bitcoin", "fashion",
+      "poker", "lions", "VR", "ski", "hockey", "kung fu", "basketball",
+      "dogs", "cartoons", "funny", "aliens","business", "shopping",
+      "france", "warcraft", "golf", "soccer", "stories", "weather",
+      "painting", "fishing" ],
       selected: 0,
       channel: "",
       frameworks: [],
@@ -24,8 +24,7 @@ class Foundation extends React.Component {
     this.initiate = this.initiate.bind(this);
     this.helper = this.helper.bind(this);
     this.shuffle = this.shuffle.bind(this);
-    // this.helper = this.helper.bind(this);
-    this.handleClick2 = this.handleClick2.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   initiate(){
@@ -51,18 +50,8 @@ class Foundation extends React.Component {
     this.setState({selected: i});
   }
 
-  handleClick(i, e){
-    e.preventDefault();
+  handleClick(i){
     this.helper(i);
-  }
-
-  handleClick2(i){
-    this.helper(i);
-  }
-
-  handleX2(i){
-    debugger
-    this.handleX(i);
   }
 
   shuffle(){
@@ -92,8 +81,6 @@ class Foundation extends React.Component {
   }
 
   handleX(i){
-    // debugger
-    // e.preventDefault();
     let frameworks = this.frameworks;
     let channels = this.state.channels;
 
@@ -137,39 +124,9 @@ class Foundation extends React.Component {
   _renderTitles(){
    let channels = this.state.channels.slice(0, 4);
 
-   // let titles = channels.map((c, i) => {
-   //   let active = (this.state.selected === i ? 'active' : '');
-   //   return (
-   //       <li className={`tab-label ${active}`}
-   //           key={i}>
-   //
-   //         <span onClick={this.handleClick.bind(this, i)}>
-   //           {c}
-   //         </span>
-   //
-   //         <button className="channel-x"
-   //                 onClick={this.handleX.bind(this, i)}>
-   //           X
-   //         </button>
-   //       </li>
-   //   );
-   // });
-   //
-   // return (
-   //   <div className="title-header">
-   //     <ul className="tab-labels">
-   //       {titles}
-   //       <section className="fa fa-random shuffle"
-   //                onClick={() => this.shuffle()}>
-   //       </section>
-   //     </ul>
-   //
-   //   </div>
-   // );
-
    return (
      <Tabs channels={channels}
-           handleClick={this.handleClick2}
+           handleClick={this.handleClick}
            handleX={this.handleX}
            selected={this.state.selected}
            shuffle={this.shuffle}/>

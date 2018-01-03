@@ -7,18 +7,17 @@ class Tabs extends React.Component {
   }
 
   handleClick(i, e){
-    // debugger
     e.preventDefault();
     this.props.handleClick(i);
   }
 
   handleX(i, e){
     e.preventDefault();
-    debugger
     this.props.handleX(i);
   }
 
-  shuffle(){
+  shuffle(e){
+    // e.preventDefault();
     this.props.shuffle();
   }
 
