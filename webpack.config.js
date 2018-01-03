@@ -1,6 +1,6 @@
 var path = require("path");
 var webpack = require('webpack');
-var InlineEnvironmentalVariablesPlugin = require('');
+var InlineEnvironmentalVariablesPlugin = require('inline-environment-variables-webpack-plugin');
 
 module.exports = {
   context: __dirname,
