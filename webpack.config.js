@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require('webpack');
+var InlineEnvironmentalVariablesPlugin = require('inline-environment-variables-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -8,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
     filename: "bundle.js"
   },
+  plugins: [new InlineEnvironmentalVariablesPlugin({NODE_ENV: 'production'})],
   module: {
     loaders: [
       {

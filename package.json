@@ -44,5 +44,8 @@
   "bugs": {
     "url": "https://github.com/michaelcohen716/Frequency2/issues"
   },
-  "homepage": "https://github.com/michaelcohen716/Frequency2#readme"
+  "homepage": "https://github.com/michaelcohen716/Frequency2#readme",
+  "devDependencies": {
+    "inline-environment-variables-webpack-plugin": "^1.2.1"
+  }
 }
