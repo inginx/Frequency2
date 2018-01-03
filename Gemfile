@@ -24,6 +24,7 @@ gem 'pry-rails'
 gem 'annotate'
 gem 'jquery-rails'
 gem 'rails_12factor'
+# ruby '2.3.4'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
