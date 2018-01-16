@@ -1,4 +1,4 @@
-# README
+# FREQUENCY2
 
 [Live](https://frequency2.live)
 
