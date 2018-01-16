@@ -6,11 +6,11 @@ class Foundation extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: ["space","aliens", "news", "new york", "bitcoin", "fashion",
+      channels: ["space","news", "new york", "bitcoin", "fashion",
       "poker", "lions", "VR", "ski", "hockey", "kung fu", "basketball",
       "dogs", "cartoons", "funny", "business", "shopping",
       "france", "warcraft", "golf", "soccer", "stories", "weather",
-      "painting", "fishing" ],
+      "painting", "fishing", "aliens" ],
       selected: 0,
       channel: "",
       frameworks: [],
