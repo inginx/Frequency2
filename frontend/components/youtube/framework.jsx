@@ -29,7 +29,7 @@ class Framework extends React.Component {
       this.setState({miniArray: this.state.miniQueue.slice(0, 4)});
     }).catch((error) => {
       console.error(error);
-      console.log("error here");
+      console.log("no videos in this channel");
     });
   }
 
@@ -45,7 +45,7 @@ class Framework extends React.Component {
   }
 
   render(){
-    if(this.state.bigVideo.id){
+    if(this.state.miniQueue.length > 0){
       return (
         <div className="grandparent">
 
@@ -62,7 +62,11 @@ class Framework extends React.Component {
       );
     } else {
       return (
-        <div></div>
+        <div className="grandparent">
+          <div className="no-streams-message">
+            Nothing to see here...try a different channel
+          </div>
+        </div>
       );
     }
 
